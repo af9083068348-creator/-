@@ -1,0 +1,222 @@
+import telebot
+import time
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+from telebot import types
+
+bot = telebot.TeleBot('8623159230:AAEuiPh6JezKSLEu0mIQHJWIUDNafQrVExA')
+
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    markup = InlineKeyboardMarkup()
+    but1 = types.InlineKeyboardButton(
+        text='перейти на стим уебана',
+        url='https://steamcommunity.com/profiles/76561199243757807'
+    )
+    but3 = types.InlineKeyboardButton(
+        text='секретное слово',
+        callback_data='edit'
+    )
+    markup.row(but1)
+    markup.row(but3)
+    bot.send_message(message.chat.id, f'здарова, {message.from_user.first_name}!', reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda callback: True)
+def callback_message(callback):
+    if callback.data == 'edit':
+        bot.edit_message_text('пися', callback.message.chat.id, callback.message.message_id)
+
+
+@bot.message_handler(content_types=['photo'])
+def get_photo(message):
+    bot.send_message(message.chat.id, 'хуйня, переделывай')
+
+
+@bot.message_handler(commands=['site'])
+def site(message):
+    markup = InlineKeyboardMarkup()
+    btn = InlineKeyboardButton(
+        text='Открыть сайт',
+        url='https://sex-studentki.live/video/zanjat-sja-seksom-ja-tol-ko-za-chto-bol-she-nravitsja-popka-ili-p-zda-48262'
+    )
+    markup.add(btn)
+    bot.send_message(message.chat.id, text='Нажми на кнопку, чтобы открыть сайт:', reply_markup=markup)
+
+
+@bot.message_handler(commands=['help'])
+def help_command(message):
+    bot.send_message(message.chat.id, 'что можно вписать: \n 1.удалить\n'
+                                      '  2.42\n  3.67\n  4./start\n  5./site\n  6.телефон у тебя хуйня\n  7.иди нахуй долбоёб\n  8.когда сдохнет семён\n  9.семён аутист\n 10.сосал?\n 11.удаленние нашей дружбы\n 12.перейти на стим уебана\n 13.секретное слово\n 14.id\n 15.секретное слово\n '
+                                      '16.семён сосал?\n 17.Тимофей сосал? \n 18.Артём сосал?\n 19.Тимур сосал?\n 20.какая игра самая крутая? \n 21.хули не работает\n 22.го в зв\n 23.го в войс\n 24.а\n 25.пизда\n 26.скинь как мама переодевается\n 27.пудж \n 28.почему '
+                                      '\n 29.дай\n 30.не робрит\n 31.тебя не спрашивали\n 32.кста\n 33.не робит\n 34.блять/блин\n 35.иван золо\n 36.да\n 37.нет\n 38.пошёл нахуй \n 39.иди нахуй \n 40.лох\n 41.э\n 42.тимур\n 43.семён\n 44.артём\n 45.тимофей\n 46.алё\n'
+                                      ' 47.он хороший\n 48.заебал\n 49.даун\n 50.долюоёб\n 51.мать семёна\n 52.до\n 53.дс/в дс?\n 54.вк/в вк\n 55.знакомая ситуация\n 56.стим семёна\n 57.стим тимофея\n 58.стим тимура\n 59.стим артёма\n 60.арбуз\n'
+                                      ' 60.отец семёна\nвы можете так же написать просто номер')
+
+
+@bot.message_handler(func=lambda message: True)
+def info(message):
+    text = message.text.lower()
+
+    if text == 'иди нахуй долбоёб' or text == '7':
+        bot.send_message(message.chat.id, 'спасибо хорошо')
+    elif text == 'да'  or text == '36':
+        bot.send_message(message.chat.id, 'пизда')
+    elif text == 'семён аутист'  or text == '9':
+        bot.send_message(message.chat.id, 'да он аутист')
+    elif text == 'когда сдохнет семён' or text == '':
+        bot.send_message(message.chat.id, 'мама твоя сдохнет')
+    elif text == 'сосал?' or text == '10':
+        bot.send_message(message.chat.id, 'да')
+    elif text == 'удаление нашей дружбы' or text == '11':
+        bot.send_message(message.chat.id, 'удаляю дружбу')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '5%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '10%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '20%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '30%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '40%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '50%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '60%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '67%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, 'о посхалко')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '70%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '80%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '90%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, '99%')
+        time.sleep(1)
+        bot.send_message(message.chat.id, 'ошибка файл слишком большой❤️😍💋')
+    elif text == 'id' or text == '14':
+        bot.reply_to(message, f'ID: {message.from_user.id}')
+    elif text == 'перейти на стим уебана' or text == '12':
+        bot.send_message(message.chat.id, 'https://steamcommunity.com/profiles/76561199243757807')
+    elif text == 'нет' or text == '37':
+        bot.send_message(message.chat.id, 'минет')
+    elif text == 'секретное слово' or text == '15' or text == '13':
+        bot.send_message(message.chat.id, 'пися')
+    elif text == 'удалить' or text == '1':
+        try:
+            bot.delete_message(message.chat.id, message.message_id)
+            bot.delete_message(message.chat.id, message.message_id - 1)
+        except:
+            bot.send_message(message.chat.id, 'не могу удалить')
+    elif text == 'семён сосал?' or text == '16':
+        bot.send_message(message.chat.id, 'да')
+    elif text == 'тимофей сосал?' or text == '17':
+        bot.send_message(message.chat.id, 'да')
+    elif text == 'артём сосал?' or text == '18':
+        bot.send_message(message.chat.id, 'да')
+    elif text == 'тимур сосал?' or text == '19':
+        bot.send_message(message.chat.id, 'да')
+    elif text == 'хули не работает' or text == '21':
+        bot.send_message(message.chat.id, 'не ебу')
+    elif text == 'го в зв' or text == '22':
+        bot.send_message(message.chat.id, 'погнали')
+    elif text == 'го в войс' or text == '23':
+        bot.send_message(message.chat.id, 'погнали')
+    elif text == 'а' or text == '24':
+        bot.send_message(message.chat.id, 'хуй на')
+    elif text == 'пизда' or text == '25':
+        bot.send_message(message.chat.id, 'да')
+    elif text == 'скинь как мама переодевается' or text == '26':
+       file = open('./photo.jpg', 'rb')
+       bot.send_photo(message.chat.id, file)
+    elif text == 'какая игра самая крутая?' or text == '20':
+       bot.send_message(message.chat.id, 'конечно дота')
+       file = open('./photo2.jpg', 'rb')
+       bot.send_photo(message.chat.id, file)
+    elif text == 'пудж' or text == '27':
+       file = open('./photo3.jpg', 'rb')
+       bot.send_photo(message.chat.id, file)
+    elif text == 'почему' or text == 'почему?' or text == '28':
+        file = open('./photo4.jpg', 'rb')
+        bot.send_photo(message.chat.id, file)
+    elif text == 'дай' or text == '29':
+        file = open('./dai.m4a', 'rb')
+        bot.send_audio(message.chat.id, file)
+    elif text == 'не робит' or text == 'не рибит' or text == '30' or text == '33':
+        bot.send_message(message.chat.id, 'ты блять не рибишь мудила')
+    elif text == 'блять' or  text == 'блин' or text == '34':
+        file = open('./ne smej matjukatsa.m4a', 'rb')
+        bot.send_audio(message.chat.id, file)
+    elif text == 'иван золо' or text == '35':
+        file = open('./zolo.m4a', 'rb')
+        bot.send_audio(message.chat.id, file)
+    elif text == 'телефон у тебя хуйня' or text == '6':
+        bot.send_message(message.chat.id, 'да хуйня')
+    elif text == '42' or text == '2':
+        bot.send_message(message.chat.id, '42 братуха кемерская зона')
+    elif text == '67' or text == '3':
+        bot.send_message(message.chat.id, 'сикс севен')
+    elif text == 'тебя не спрашивали' or text == '31':
+        bot.send_message(message.chat.id, 'пошёл нахуй')
+    elif text == 'кста' or text == 'кстати' or text == '32':
+        bot.send_message(message.chat.id, 'не продолжай, всем похуй')
+    elif text == 'семён' or text == '43':
+        bot.send_message(message.chat.id, 'правильно не семён, а аутист')
+    elif text == 'пошёл нахуй' or text == '38':
+        bot.send_message(message.chat.id, 'сам пошёл нахуй')
+    elif text == 'иди нахуй' or text == '39':
+        bot.send_message(message.chat.id, 'сам иди нахуй')
+    elif text == 'лох' or text == '40':
+        bot.send_message(message.chat.id, 'сам лох ебанный')
+    elif text == 'э' or text == '41':
+        bot.send_message(message.chat.id, 'не экай долбоёб')
+    elif text == 'тимур' or text == '42':
+        bot.send_message(message.chat.id, 'вообще то правильно темур')
+    elif text == 'хули' or text == '43':
+        bot.send_message(message.chat.id, 'тебя ебать не должно')
+    elif text == 'артём' or text == '44':
+        bot.send_message(message.chat.id, 'гей')
+    elif text == 'тимофей' or text == '45':
+        bot.send_message(message.chat.id, 'тимофейко')
+    elif text == 'алё' or text == '46':
+        bot.send_message(message.chat.id, 'хуем по лбу не дало?')
+    elif text == 'он хороший' or text == '47':
+        bot.send_message(message.chat.id, 'а ты нет')
+    elif text == 'заебал' or text == '48':
+        bot.send_message(message.chat.id, 'сам заебал')
+    elif text == 'даун' or text == '49':
+        bot.send_message(message.chat.id, 'сам даун ебанный')
+    elif text == 'долбоёб' or text == 'долбоёб бот' or text == '50':
+        bot.send_message(message.chat.id, 'сам ты долбоёб блять')
+    elif text == 'мать семёна' or text == '51':
+        bot.send_message(message.chat.id, 'шлюха')
+    elif text == 'до' or text == '52':
+        bot.send_message(message.chat.id, 'пиздо')
+    elif text == 'дс' or text == 'в дс' or text == 'дс?' or text == 'в дс?' or text == '53':
+        bot.send_message(message.chat.id, 'да, дс крутой')
+    elif text == 'вк' or text == 'в вк' or text == 'вк?' or text == 'в вк?' or text == '54':
+        bot.send_message(message.chat.id, 'идите лучше в дс, вк прослущивают')
+    elif text == 'знакомая ситуация' or text == '55':
+        file = open('./sirena.m4a', 'rb')
+        bot.send_audio(message.chat.id, file)
+    elif text == 'стим семёна' or text == '56':
+        bot.send_message(message.chat.id, 'https://steamcommunity.com/profiles/76561199243757807')
+    elif text == 'стим тимофея' or text == '57':
+        bot.send_message(message.chat.id, 'https://steamcommunity.com/id/lk-04kO')
+    elif text == 'стим тимура' or text == '58':
+        bot.send_message(message.chat.id, 'https://steamcommunity.com/profiles/76561199802674930')
+    elif text == 'стим артёма' or text == '59':
+        bot.send_message(message.chat.id, 'https://steamcommunity.com/profiles/76561199799882278/')
+    elif text == 'арбуз' or text == '60':
+        file = open('./arbuz.m4a', 'rb')
+        bot.send_audio(message.chat.id, file)
+    elif text == 'да иди нахуй' or text == 'да пошёл нахуй':
+        bot.send_message(message.chat.id, 'сам иди нахуй')
+    elif text == 'отец семёна' or text == '61':
+        bot.send_message(message.chat.id, 'кунимен')
+
+bot.polling(none_stop=True)
